@@ -4,7 +4,7 @@ import { Component, OnInit, Inject } from '@angular/core';
   selector: 'app-login',
   template: `
     <div>
-      <form #formRef="ngF orm" (ngSubmit)="onSubmit(formRef.value)">
+      <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
         <fieldset ngModuleGroup="login">
           <input name="username"
                  type="text"
