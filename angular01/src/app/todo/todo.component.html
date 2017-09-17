@@ -1,6 +1,29 @@
-<div>
-  <input type="text" [(ngModel)]="desc" (keyup.enter)="addTodo()">
-  <ul>
-    <li *ngFor="let todo of todos">{{ todo.desc }}</li>
-  </ul> 
-</div>
+<section class="todoapp">
+  <header class="header">
+    <h1>Todos</h1>
+    <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="desc" (keyup.enter.enter)="addTodo()" />
+  </header>
+  <section class="main" *ngIf="todos.length > 0">
+    <input class="toggle-all" type="checkbox" />
+    <ul class="todo-list">
+      <li *ngFor="let todo of todos" [class.completed] = "todo.completed">
+        <div class="view">
+          <input id="todo.id" type="checkbox" class="toggle" (click)="toggleTod(todo)" [checked]="todo.completed">
+          <label for="todo.id">{{ todo.desc }}</label>
+          <button (click)="removeTodo(todo); $event.stopPropagation()" class="destory">remove</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <footer class="footer" *ngIf="todos.length > 0">
+    <span class="todo-count">
+      <strong>{{todos.length}}</strong> {{ todos.length > 1 ? items : item }} left
+      <ul>
+        <li><a href="">All</a></li>
+        <li><a href="">Active</a></li>
+        <li><a href="">Completed</a></li>
+      </ul>
+    </span>
+    <button class="clear-completed">Clear-completed</button>
+  </footer>
+</section>
